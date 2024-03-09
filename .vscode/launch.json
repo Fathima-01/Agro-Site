@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Millet Options with Images</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #milletType {
+            width: 200px;
+            padding: 8px;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: calc(100% - 8px) center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #milletOptions option {
+            display: none;
+        }
+
+        #milletOptions option:checked {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="milletType">Select a Millet:</label>
+    <input type="text" id="milletType" name="milletType" list="milletOptions" autocomplete="off">
+
+    <datalist id="milletOptions">
+        <!-- Replace the placeholder image paths with your actual image URLs -->
+        <option value="Rice" data-image="https://example.com/grains/basmati-rice.jpg">
+        <option value="Corn" data-image="https://example.com/grains/corn.jfif">
+        <option value="Barley" data-image="https://example.com/grains/barley.jpg">
+        <!-- Add more millet options as needed with their respective image URLs -->
+    </datalist>
+
+    <script src="script.js"></script>
+</body>
+</html>
