@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits</title>
+    <link rel="shortcut icon" type="x-icon" href="Vegetables/agro image.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #faf2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(8, 8, 8);
+        }
+
+        .fruit-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .fruit-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .add-to-cart-form {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 5px;
+            width: 50px;
+        }
+
+        .shopping-cart {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .buy-button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .buy-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Fruits</h1>
+
+<div class="fruit-container">
+    <!-- Apple -->
+    <div class="fruit-card">
+        <img src="https://images.picxy.com/cache/2020/9/19/31f4ea8aaa9e61125a73e3b1a0748b5c.jpg" alt="Apple" style="width: 200px; height: 150px;">
+        <h2>Apple</h2>
+        <p>Price: Rs 180 per kg</p>
+        <form class="add-to-cart-form">
+            <label for="apple-quantity">Quantity:</label>
+            <input type="number" id="apple-quantity" name="apple-quantity" min="1" value="1">
+            <a href="#" onclick="addToCart('Apple', 180, 'apple-quantity')">Add to Cart</a>
+        </form>
+    </div>
+    <!-- Grapes -->
+    <div class="fruit-card">
+        <img src="grains/grapes.jpg" alt="Grapes" style="width: 200px; height: 150px;">
+        <h2>Grapes</h2>
+        <p>Price: Rs 80 per kg</p>
+        <form class="add-to-cart-form">
+            <label for="grapes-quantity">Quantity:</label>
+            <input type="number" id="grapes-quantity" name="grapes-quantity" min="1" value="1">
+            <a href="#" onclick="addToCart('Grapes', 80, 'grapes-quantity')">Add to Cart</a>
+        </form>
+    </div>
+    <!-- Mango -->
+    <div class="fruit-card">
+        <img src="grains/mango.jpeg" alt="Mango" style="width: 200px; height: 150px;">
+        <h2>Mango</h2>
+        <p>Price: Rs 80 per kg</p>
+        <form class="add-to-cart-form">
+            <label for="mango-quantity">Quantity:</label>
+            <input type="number" id="mango-quantity" name="mango-quantity" min="1" value="1">
+            <a href="#" onclick="addToCart('Mango', 80, 'mango-quantity')">Add to Cart</a>
+        </form>
+    </div>
+
+    <!-- Add similar blocks for other fruits -->
+
+</div>
+
+<div class="shopping-cart" id="shopping-cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: <span id="cart-total">0.00</span></p>
+    <button class="buy-button" onclick="buyNow()">Buy Now</button>
+</div>
+
+<script>
+    function addToCart(itemName, price, quantityId) {
+        var quantity = parseInt(document.getElementById(quantityId).value);
+        var totalPrice = price * quantity;
+
+        var cartItems = document.getElementById('cart-items');
+        var cartTotal = document.getElementById('cart-total');
+
+        // Create a new list item
+        var listItem = document.createElement('li');
+        listItem.textContent = itemName + ' - Rs' + totalPrice.toFixed(2) + ' (Quantity: ' + quantity + ')';
+
+        // Append the new item to the cart
+        cartItems.appendChild(listItem);
+
+        // Update the total amount
+        var currentTotal = parseFloat(cartTotal.textContent);
+        cartTotal.textContent = (currentTotal + totalPrice).toFixed(2);
+    }
+
+    function buyNow() {
+        var cartItems = document.getElementById('cart-items');
+        var cartTotal = document.getElementById('cart-total');
+
+        // Clear the cart
+        cartItems.innerHTML = '';
+        cartTotal.textContent = '0.00';
+
+        // Display a confirmation message
+        alert('Thank you for your purchase!');
+    }
+</script>
+
+</body>
+</html>

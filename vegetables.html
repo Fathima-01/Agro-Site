@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #e5dbdb;
+        }
+
+        h1 {
+            text-align: center;
+            color: #f3efef;
+        }
+
+        .vegetable-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .vegetable-card {
+            border: 1px solid #188870;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            background-color: #f0ebeb;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .add-to-cart-form {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 5px;
+            width: 50px;
+        }
+
+        .shopping-cart {
+            border: 1px solid #0f0c0c;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        #cart-items {
+            color: #4caf50; /* Change the color to your preferred color */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Vegetables</h1>
+
+<div class="vegetable-container">
+    <!-- Tomato -->
+    <div class="vegetable-card">
+        <img src="grains/tomato.jpg" alt="tomato" style="width: 200px; height: 150px;">
+        <h2>Tomato</h2>
+        <p>Price: Rs 15 per kg</p>
+        <form class="add-to-cart-form">
+            <label for="tomato-quantity">Quantity:</label>
+            <input type="number" id="tomato-quantity" name="tomato-quantity" min="1" value="1">
+            <a href="#" onclick="addToCart('Tomato', 15, 'tomato-quantity')">Add to Cart</a>
+        </form>
+    </div>
+    <!-- Potato -->
+    <div class="vegetable-card">
+        <img src="grains/potato.jpg" alt="Potato" style="width: 200px; height: 150px;">
+        <h2>Potato</h2>
+        <p>Price: Rs 30 per kg</p>
+        <form class="add-to-cart-form">
+            <label for="potato-quantity">Quantity:</label>
+            <input type="number" id="potato-quantity" name="potato-quantity" min="1" value="1">
+            <a href="#" onclick="addToCart('Potato', 30, 'potato-quantity')">Add to Cart</a>
+        </form>
+    </div>
+    <!-- Lady's Finger -->
+    <div class="vegetable-card">
+        <img src="grains/ladys finger.png" alt="Lady's Finger" style="width: 200px; height: 150px;">
+        <h2>Lady's Finger</h2>
+        <p>Price: Rs 20 per kg</p>
+        <form class="add-to-cart-form">
+            <label for="Lady-Finger-quantity">Quantity:</label>
+            <input type="number" id="Lady-Finger-quantity" name="Lady-Finger-quantity" min="1" value="1">
+            <a href="#" onclick="addToCart('Lady Finger', 20, 'Lady-Finger-quantity')">Add to Cart</a>
+        </form>
+    </div>
+    <!-- Chilli -->
+    <div class="vegetable-card">
+        <img src="grains/chilli.jpg" alt="Chilli" style="width: 200px; height: 150px;">
+        <h2>Chilli</h2>
+        <p>Price: Rs 10 per kg</p>
+        <form class="add-to-cart-form">
+            <label for="Chilli-quantity">Quantity:</label>
+            <input type="number" id="Chilli-quantity" name="Chilli-quantity" min="1" value="1">
+            <a href="#" onclick="addToCart('Chilli', 10, 'Chilli-quantity')">Add to Cart</a>
+        </form>
+    </div>
+    <!-- Brinjal -->
+    <div class="vegetable-card">
+        <img src="grains/brinjal.jpg" alt="Brinjal" style="width: 200px; height: 150px;">
+        <h2>Brinjal</h2>
+        <p>Price: Rs 25 per kg</p>
+        <form class="add-to-cart-form">
+            <label for="Brinjal-quantity">Quantity:</label>
+            <input type="number" id="Brinjal-quantity" name="Brinjal-quantity" min="1" value="1">
+            <a href="#" onclick="addToCart('Brinjal', 25, 'Brinjal-quantity')">Add to Cart</a>
+        </form>
+    </div>
+    <!-- Carrot -->
+    <div class="vegetable-card">
+        <img src="grains/carrot.jpg" alt="Carrot" style="width: 200px; height: 150px;">
+        <h2>Carrot</h2>
+        <p>Price: Rs 20 per kg</p>
+        <form class="add-to-cart-form">
+            <label for="Carrot-quantity">Quantity:</label>
+            <input type="number" id="Carrot-quantity" name="Carrot-quantity" min="1" value="1">
+            <a href="#" onclick="addToCart('Carrot', 20, 'Carrot-quantity')">Add to Cart</a>
+        </form>
+    </div>
+    <!-- Repeat the above structure for each vegetable -->
+</div>
+
+<div class="shopping-cart" id="shopping-cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items"></ul>
+    <p>Total Items: <span id="cart-item-count">0</span></p>
+    <p>Total Amount: <span id="cart-total">0.00</span></p>
+</div>
+
+<script>
+    var cartItemCount = 0; // Initialize the counter for cart items
+    var cartTotalAmount = 0; // Initialize the total amount in the cart
+
+    function addToCart(itemName, price, quantityId) {
+        var quantity = parseInt(document.getElementById(quantityId).value);
+        var totalPrice = price * quantity;
+
+        var cartItems = document.getElementById('cart-items');
+        var cartTotal = document.getElementById('cart-total');
+        var cartItemCountSpan = document.getElementById('cart-item-count');
+
+        // Create a new list item
+        var listItem = document.createElement('li');
+        listItem.textContent = itemName + ' - Rs' + totalPrice.toFixed(2) + ' (Quantity: ' + quantity + ')';
+
+        // Append the new item to the cart
+        cartItems.appendChild(listItem);
+
+        // Update the total amount
+        var currentTotal = parseFloat(cartTotal.textContent);
+        cartTotalAmount = currentTotal + totalPrice;
+        cartTotal.textContent = cartTotalAmount.toFixed(2);
+
+        // Update the item count
+        cartItemCount++;
+        cartItemCountSpan.textContent = cartItemCount;
+    }
+</script>
+
+</body>
+</html>/html>

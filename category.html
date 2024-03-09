@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <link rel="shortcut icon" type="x-icon" href="Vegetables/agro image.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #27a331;
+            color: #121111;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #0e0e0e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #27a331;
+        }
+
+        .container {
+            color: #0e0e0e;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .category {
+            color: #0e0e0e;
+            width: calc(33.33% - 20px);
+            border: 1px solid #27a33;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .category h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .category img {
+            width: 100%;
+            max-width: 200px;
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Categories</h1>
+    </header>
+
+    <nav>
+        <a href="fruits.html">Fruits</a>
+        <a href="vegetables.html">Vegetables</a>
+        <a href="grains.html">Grains</a>
+    </nav>
+
+    <div class="container">
+        <div id="fruits" class="category">
+            <h2>Fruits</h2>
+            <img src="Vegetables/fruits.jpeg" alt="Fruits">
+            <p>Fruits are delicious and nutritious...</p>
+        </div>
+
+        <div id="vegetables" class="category">
+            <h2>Vegetables</h2>
+            <img src="Vegetables/veggi.jpeg" alt="Vegetables">
+            <p>Vegetables are good for your health...</p>
+        </div>
+
+        <div id="grains" class="category">
+            <h2>Grains</h2>
+            <img src="Vegetables/gra.jpeg" alt="Grains">
+            <p>Grains provide essential nutrients...</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
