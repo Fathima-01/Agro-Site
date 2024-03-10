@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Millet Shop</title>
+  <style>
+    /* Add your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      text-align: center;
+    }
+
+    img {
+      max-width: 50%;
+      height: auto;
+    }
+
+    .add-to-cart-form {
+      margin-top: 10px;
+    }
+
+    .shopping-cart {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Grains</h1>
+
+<div class="product-container">
+  <div class="product-card">
+    <img src="grains/barley.jfif" alt="Barley">
+    <h2>Barley</h2>
+    <p>Price: Rs 100 per kg</p>
+    <form class="add-to-cart-form">
+      <label for="barley-quantity">Quantity:</label>
+      <input type="number" id="barley-quantity" name="barley-quantity" min="1" value="1">
+      <a href="#" onclick="addToCart('Barley', 100, 'barley-quantity')">Add to Cart</a>
+    </form>
+  </div>
+
+  <div class="product-card">
+    <img src="grains/basmathi rice.jpg" alt="Rice">
+    <h2>Rice</h2>
+    <p>Price: Rs 100 per kg</p>
+    <form class="add-to-cart-form">
+      <label for="rice-quantity">Quantity:</label>
+      <input type="number" id="rice-quantity" name="rice-quantity" min="1" value="1">
+      <a href="#" onclick="addToCart('Rice', 100, 'rice-quantity')">Add to Cart</a>
+    </form>
+  </div>
+
+  <div class="product-card">
+    <img src="grains/corn.jfif" alt="Corn">
+    <h2>Corn</h2>
+    <p>Price: Rs 200 per kg</p>
+    <form class="add-to-cart-form">
+      <label for="corn-quantity">Quantity:</label>
+      <input type="number" id="corn-quantity" name="corn-quantity" min="1" value="1">
+      <a href="#" onclick="addToCart('Corn', 200, 'corn-quantity')">Add to Cart</a>
+    </form>
+  </div>
+  <!-- Repeat similar blocks for other grains -->
+
+</div>
+
+<div class="shopping-cart" id="shopping-cart">
+  <h2>Shopping Cart</h2>
+  <ul id="cart-items"></ul>
+  <p>Total: <span id="cart-total">0.00</span></p>
+</div>
+
+<script>
+  function addToCart(itemName, price, quantityId) {
+    var quantity = document.getElementById(quantityId).value;
+    var total = (price * quantity).toFixed(2);
+
+    // Update the shopping cart display
+    var cartItems = document.getElementById('cart-items');
+    var cartTotal = document.getElementById('cart-total');
+
+    var listItem = document.createElement('li');
+    listItem.textContent = itemName + " - Rs " + total;
+    cartItems.appendChild(listItem);
+
+    // Update the total price
+    var currentTotal = parseFloat(cartTotal.textContent);
+    cartTotal.textContent = (currentTotal + parseFloat(total)).toFixed(2);
+  }
+</script>
+
+</body>
+</html>
